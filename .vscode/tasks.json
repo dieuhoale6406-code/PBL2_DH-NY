@@ -7,20 +7,29 @@
 			"command": "g++",
 			"args": [
 				"-g",
-				// 1. Chỉ cho compiler nơi tìm header (.hpp)
+				// Đường dẫn đến thư mục include của DỰ ÁN
+				"-I${workspaceFolder}/include",  // <<--- THÊM DÒNG NÀY
+				
+				// Đường dẫn đến thư mục include của SFML
 				"-I${workspaceFolder}/lib/SFML-2.6.1/include",
-				// 2. Chỉ cho linker nơi tìm thư viện (.a)
+				
+				// Đường dẫn đến thư mục library
 				"-L${workspaceFolder}/lib/SFML-2.6.1/lib",
-				// 3. Gom tất cả các file .cpp để biên dịch
-				"${workspaceFolder}/src/*.cpp",
-				"${workspaceFolder}/src/ui/*.cpp",
-				// 4. Đặt tên và vị trí cho file .exe
+
+				// Các file mã nguồn
+				"${workspaceFolder}/Source/*.cpp",
+				"${workspaceFolder}/Source/ui/*.cpp",
+				//"${workspaceFolder}/Source/core/*.cpp",
+				
+				// File output
 				"-o",
 				"${workspaceFolder}/bin/app-debug.exe",
-				// 5. Liên kết với các thư viện SFML (bản debug có đuôi -d)
+
+				// Liên kết thư viện SFML
 				"-lsfml-graphics-d",
 				"-lsfml-window-d",
-				"-lsfml-system-d"
+				"-lsfml-system-d",
+				"-lsfml-main-d"
 			],
 			"group": {
 				"kind": "build",

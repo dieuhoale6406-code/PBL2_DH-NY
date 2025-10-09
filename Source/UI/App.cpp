@@ -1,13 +1,12 @@
-#include "Include/UI/App.h"
+#include "UI/App.h"
 
 App::App()
-    : mWindow(sf::VideoMode(1280, 720), "Phan Mem Quan Ly Kho", sf::Style::Default)
-{
+    : mWindow(sf::VideoMode::getDesktopMode(), "Phan Mem Quan Ly Kho", sf::Style::Fullscreen)
+    , mLoginButton(u8"Đăng Nhập", {540, 300}, {200, 50}, mFont)
+    , mExitButton(u8"Thoát", {540, 400}, {200, 50}, mFont){
     // 1. Tải font chữ (quan trọng!)
-    if (!mFont.loadFromFile("assets/fonts/arial.ttf")) {
-        // Nếu không tải được font, in lỗi và thoát
-        std::cerr << "Error: Khong the tai font assets/fonts/arial.ttf" << std::endl;
-        // Ném một exception để dừng chương trình một cách an toàn
+    if (!mFont.loadFromFile("Assets/fonts/Roboto_Condensed-Bold.ttf")) {
+        std::cerr << "Error: Khong the tai font Assets/fonts/Roboto_Condensed-Bold.ttf" << std::endl;
         throw std::runtime_error("Failed to load font!");
     }
 
@@ -38,6 +37,11 @@ void App::processEvents() {
     while (mWindow.pollEvent(event)) {
         if (event.type == sf::Event::Closed) {
             mWindow.close();
+        }
+        if (event.type == sf::Event::KeyPressed) {
+            if (event.key.code == sf::Keyboard::Escape) {
+                mWindow.close();
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstring>
-#include "SegmentTree.h"
+#include "core/SegmentTree.h"
 
 using namespace std;
 

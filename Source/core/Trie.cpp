@@ -1,4 +1,4 @@
-#include "Trie.h"
+#include "core/Trie.h"
 
 // TrieNode
 TrieNode::TrieNode():end(false) {

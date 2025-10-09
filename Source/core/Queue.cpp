@@ -1,4 +1,4 @@
-#include "Queue.h"
+#include "core/Queue.h"
 
 Queue::Node::Node(int v) : data(v), next(nullptr) {}
 

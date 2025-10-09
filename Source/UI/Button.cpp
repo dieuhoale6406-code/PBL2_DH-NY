@@ -6,7 +6,7 @@ Button::Button(const std::string& text, sf::Vector2f position, sf::Vector2f size
     mShape.setFillColor(sf::Color(100, 100, 100)); // Màu xám
 
     mText.setFont(font);
-    mText.setString(sf::String::fromUtf8(text.c_str()));
+    mText.setString(text);
     mText.setCharacterSize(24);
     mText.setFillColor(sf::Color::White);
 
