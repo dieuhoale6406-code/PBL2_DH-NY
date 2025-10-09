@@ -1,26 +1,34 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Build SFML Project",
-            "type": "shell",
-            "command": "D:/bin/mingw64_14.2.0/bin/g++.exe",
-            "args": [
-                "-g",
-                "${workspaceFolder}/*.cpp",
-                "-o",
-                "${workspaceFolder}/main.exe",
-                "-ID:\\bin\\SFML-3.0.2-windows-gcc-14.2.0-mingw-64-bit\\SFML-3.0.2\\include",
-                "-LD:\\bin\\SFML-3.0.2-windows-gcc-14.2.0-mingw-64-bit\\SFML-3.0.2\\lib",
-                "-lsfml-graphics",
-                "-lsfml-window",
-                "-lsfml-system"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": ["$gcc"]
-        }
-    ]
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build Project (Debug)",
+			"type": "shell",
+			"command": "g++",
+			"args": [
+				"-g",
+				// 1. Chỉ cho compiler nơi tìm header (.hpp)
+				"-I${workspaceFolder}/lib/SFML-2.6.1/include",
+				// 2. Chỉ cho linker nơi tìm thư viện (.a)
+				"-L${workspaceFolder}/lib/SFML-2.6.1/lib",
+				// 3. Gom tất cả các file .cpp để biên dịch
+				"${workspaceFolder}/src/*.cpp",
+				"${workspaceFolder}/src/ui/*.cpp",
+				// 4. Đặt tên và vị trí cho file .exe
+				"-o",
+				"${workspaceFolder}/bin/app-debug.exe",
+				// 5. Liên kết với các thư viện SFML (bản debug có đuôi -d)
+				"-lsfml-graphics-d",
+				"-lsfml-window-d",
+				"-lsfml-system-d"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [
+				"$gcc"
+			]
+		}
+	]
 }
