@@ -1,43 +1,31 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "Build Project (Debug)",
-			"type": "shell",
-			"command": "g++",
-			"args": [
-				"-g",
-				// Đường dẫn đến thư mục include của DỰ ÁN
-				"-I${workspaceFolder}/include",  // <<--- THÊM DÒNG NÀY
-				
-				// Đường dẫn đến thư mục include của SFML
-				"-I${workspaceFolder}/lib/SFML-2.6.1/include",
-				
-				// Đường dẫn đến thư mục library
-				"-L${workspaceFolder}/lib/SFML-2.6.1/lib",
-
-				// Các file mã nguồn
-				"${workspaceFolder}/Source/*.cpp",
-				"${workspaceFolder}/Source/ui/*.cpp",
-				//"${workspaceFolder}/Source/core/*.cpp",
-				
-				// File output
-				"-o",
-				"${workspaceFolder}/bin/app-debug.exe",
-
-				// Liên kết thư viện SFML
-				"-lsfml-graphics-d",
-				"-lsfml-window-d",
-				"-lsfml-system-d",
-				"-lsfml-main-d"
-			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"problemMatcher": [
-				"$gcc"
-			]
-		}
-	]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Project (Debug)",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-I${workspaceFolder}/Include",
+                "-I${workspaceFolder}/lib/SFML-2.6.1/include",
+                "-L${workspaceFolder}/lib/SFML-2.6.1/lib",
+                "${workspaceFolder}/Source/*.cpp",
+                "${workspaceFolder}/Source/UI/*.cpp",
+                "-o",
+                "${workspaceFolder}/bin/app-debug.exe",
+                "-lsfml-graphics-d",
+                "-lsfml-window-d",
+                "-lsfml-system-d",
+                "-lsfml-main-d"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
 }

@@ -2,19 +2,21 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-class Button {
+class TextBox {
 public:
-    Button();
-    Button(const std::string& text, sf::Vector2f size, sf::Font& font);
+    TextBox();
+    TextBox(sf::Vector2f size, sf::Font& font);
 
     void setPosition(sf::Vector2f position);
-    void update(sf::Vector2i mousePosition);
+    void handleEvent(sf::Event& event);
     void draw(sf::RenderWindow& window);
+    void setSelected(bool selected);
+    std::string getText() const;
     bool isClicked(sf::Vector2i mousePosition);
 
 private:
     sf::RectangleShape mShape;
     sf::Text mText;
-    sf::Color mBaseColor;
-    sf::Color mHoverColor;
+    std::string mInputString;
+    bool mIsSelected = false;
 };

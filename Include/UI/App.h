@@ -1,23 +1,27 @@
 #pragma once
-
 #include <SFML/Graphics.hpp>
-#include <iostream>
-#include "ui/Button.h"
+#include <stack>
+#include "core/State.h"
 
 class App {
 public:
     App();
+    ~App();
     void run();
 
+    void pushState(State* state);
+    void popState();
+    void changeState(State* state);
+
+    sf::RenderWindow& getWindow();
+    sf::Font& getFont();
+
 private:
-    void processEvents();
+    void handleEvents();
     void update(sf::Time dt);
-    void render();
+    void draw();
 
     sf::RenderWindow mWindow;
     sf::Font mFont;
-    sf::Text mWelcomeText;
-
-    Button mLoginButton;
-    Button mExitButton;
+    std::stack<State*> mStates;
 };

@@ -1,16 +1,15 @@
-#include "ui/App.h" // Include file header của lớp App
+#include "UI/App.h"
 #include <iostream>
 
-int main()
-{
+int main() {
     try {
-        App myApp;   // Tạo một đối tượng của lớp App
-        myApp.run(); // Chạy vòng lặp chính của ứng dụng
+        App myApp;
+        myApp.run();
+    } catch (const std::exception& e) {
+        std::cerr << "Da xay ra loi: " << e.what() << std::endl;
+        std::cout << "Nhan Enter de thoat...";
+        std::cin.get();
+        return 1;
     }
-    catch (const std::exception& e) {
-        std::cerr << "Mot loi da xay ra: " << e.what() << std::endl;
-        return 1; // Thoát với mã lỗi
-    }
-
-    return 0; // Thoát thành công
+    return 0;
 }
